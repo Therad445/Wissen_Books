@@ -1,2 +1,2 @@
 ## To start Docker in Termial
-docker-compose up --build
+sudo docker-compose up --build
