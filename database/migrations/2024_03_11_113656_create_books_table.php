@@ -8,58 +8,62 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
-        // Файл миграции для таблицы Книг (Books)
-        Schema::create('books', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->unsignedBigInteger('author_id');
-            $table->foreign('author_id')->references('author_id')->on('authors');
-            $table->string('isbn')->nullable();
-            $table->unsignedBigInteger('publisher_id')->nullable();
-            $table->foreign('publisher_id')->references('publisher_id')->on('publishers');
-            $table->integer('publication_year')->nullable();
-            $table->unsignedBigInteger('genre_id')->nullable();
-            $table->foreign('genre_id')->references('genre_id')->on('genres');
-            $table->text('description')->nullable();
-            $table->text('cover_image_url')->nullable();
-            $table->timestamps();
-        });
-
-        // Файл миграции для таблицы Авторов (Authors)
         Schema::create('authors', function (Blueprint $table) {
-            $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->id('author_id');
+            $table->string('first_name', 50);
+            $table->string('last_name', 50);
             $table->text('biography')->nullable();
             $table->timestamps();
         });
 
-        // Файл миграции для таблицы Издательств (Publishers)
         Schema::create('publishers', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->id('publisher_id');
+            $table->string('name', 100);
             $table->text('address')->nullable();
             $table->text('contact_info')->nullable();
             $table->timestamps();
         });
 
-        // Файл миграции для таблицы Жанров (Genres)
         Schema::create('genres', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->id('genre_id');
+            $table->string('name', 50);
             $table->timestamps();
         });
 
+        Schema::create('books', function (Blueprint $table) {
+            $table->id('book_id');
+            $table->string('title', 255);
+            $table->unsignedBigInteger('author_id');
+            $table->string('isbn', 20)->nullable();
+            $table->unsignedBigInteger('publisher_id')->nullable();
+            $table->integer('publication_year')->nullable();
+            $table->unsignedBigInteger('genre_id')->nullable();
+            $table->text('description')->nullable();
+            $table->text('cover_image_url')->nullable();
+
+            $table->foreign('author_id')->references('author_id')->on('authors')->onDelete('cascade');
+            $table->foreign('publisher_id')->references('publisher_id')->on('publishers')->onDelete('set null');
+            $table->foreign('genre_id')->references('genre_id')->on('genres')->onDelete('set null');
+
+            $table->timestamps();
+        });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('books');
+        Schema::dropIfExists('genres');
+        Schema::dropIfExists('publishers');
+        Schema::dropIfExists('authors');
     }
 };

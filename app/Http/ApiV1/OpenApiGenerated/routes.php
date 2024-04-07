@@ -5,7 +5,9 @@
  * Do NOT edit it manually. Run `php artisan openapi:generate-server`.
  */
 
-use App\Http\ApiV1\Modules\Foos\Controllers\FoosController;
+use App\Http\ApiV1\Modules\Books\Controllers\BooksController;
+use App\Http\ApiV1\Modules\News\Controllers\BooksController as BooksController2;
 use Illuminate\Support\Facades\Route;
 
-Route::get('examples/{id}', [FoosController::class, 'get'])->name('getExample');
+Route::post('news/news', [BooksController::class, 'create']);
+Route::get('news/news/{id}', [BooksController2::class, 'get']);

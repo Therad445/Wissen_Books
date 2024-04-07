@@ -1,0 +1,92 @@
+Books:
+  type: object
+  properties:
+    book_id:
+      type: integer
+      description: Идентификатор книги
+      example: 1
+    title:
+      type: string
+      description: Название книги
+      example: "В Москве появится новый вокзал"
+    author_id:
+      type: integer
+      description: Идентификатор автора книги
+      example: 1
+    isbn:
+      type: string
+      description: ISBN книги
+      example: "978-5-17-119120-0"
+    publisher_id:
+      type: integer
+      description: Идентификатор издателя книги
+      example: 1
+    publication_year:
+      type: integer
+      description: Год публикации книги
+      example: 2024
+    genre_id:
+      type: integer
+      description: Идентификатор жанра книги
+      example: 1
+    description:
+      type: string
+      description: Описание книги
+      example: "Построят его в Зеленограде, оттуда можно будет доехать до Санкт-Петербурга всего за 2 часа и 15 минут"
+    cover_image_url:
+      type: string
+      description: URL обложки книги
+      example: "https://example.com/book_cover.jpg"
+  required:
+    - book_id
+    - title
+    - author_id
+
+BooksResponse:
+  type: object
+  properties:
+    data:
+      $ref: '#/Books'
+    meta:
+      type: object
+  required:
+    - data
+
+CreateBooksRequest:
+  type: object
+  properties:
+    title:
+      type: string
+      description: Название книги
+      example: "В Москве появится новый вокзал"
+    author_id:
+      type: integer
+      description: Идентификатор автора книги
+      example: 1
+    isbn:
+      type: string
+      description: ISBN книги
+      example: "978-5-17-119120-0"
+    publisher_id:
+      type: integer
+      description: Идентификатор издателя книги
+      example: 1
+    publication_year:
+      type: integer
+      description: Год публикации книги
+      example: 2024
+    genre_id:
+      type: integer
+      description: Идентификатор жанра книги
+      example: 1
+    description:
+      type: string
+      description: Описание книги
+      example: "Построят его в Зеленограде, оттуда можно будет доехать до Санкт-Петербурга всего за 2 часа и 15 минут"
+    cover_image_url:
+      type: string
+      description: URL обложки книги
+      example: "https://example.com/book_cover.jpg"
+  required:
+    - title
+    - author_id
