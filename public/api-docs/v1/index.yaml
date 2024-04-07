@@ -1,17 +1,17 @@
 openapi: 3.0.3
 info:
-  title: Ensi Backend Skeleton (Replace me)
+  title: Wissen Books
   contact:
-    name: API Support
-    url: https://ensi.tech/contacts
-    email: mail@greensight.ru
+    name: Books API
+    url: https://github.com/Therad445/Wissen_Books
+    email: islamov.radmir@gmail.com
   version: 1.0.0
-  description: Ensi Backend Skeleton Description (Replace me)
+  description: API Books Backend for Service with Books 
 servers:
   - url: /api/v1
 tags:
-  - name: examples
-    description: Тэг-пример
+  - name: books
+    description: Books
 paths:
   /examples/{id}:
     get:
