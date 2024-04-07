@@ -12,11 +12,29 @@ servers:
 tags:
   - name: books
     description: Books service
+  - name: genres
+    description: Genres service
+  - name: authors
+    description: Authors service
+  - name: publishers
+    description: Publishers service
 paths:
   /books/books:
     $ref: './books/paths.yaml#/Books'
   /books/books/{id}:
     $ref: './books/paths.yaml#/BooksOne'
+  /genres/genres:
+    $ref: './genres/paths.yaml#/Genres'
+  /genres/genres/{id}:
+    $ref: './genres/paths.yaml#/GenresOne'
+  /authors/authors:
+    $ref: './authors/paths.yaml#/Authors'
+  /authors/authors/{id}:
+    $ref: './authors/paths.yaml#/AuthorsOne'
+  /publishers/publishers:
+    $ref: './publishers/paths.yaml#/Publishers'
+  /publishers/publishers/{id}:
+    $ref: './publishers/paths.yaml#/PublishersOne'
 components:
   parameters:
     QueryInclude:

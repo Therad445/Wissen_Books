@@ -5,8 +5,17 @@
  * Do NOT edit it manually. Run `php artisan openapi:generate-server`.
  */
 
+use App\Http\ApiV1\Modules\Authors\Controllers\AuthorsController;
 use App\Http\ApiV1\Modules\Books\Controllers\BooksController;
+use App\Http\ApiV1\Modules\Genres\Controllers\GenresController;
+use App\Http\ApiV1\Modules\Publishers\Controllers\PublishersController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('books/books', [BooksController::class, 'create']);
 Route::get('books/books/{id}', [BooksController::class, 'get']);
+Route::post('genres/genres', [GenresController::class, 'create']);
+Route::get('genres/genres/{id}', [GenresController::class, 'get']);
+Route::post('authors/authors', [AuthorsController::class, 'create']);
+Route::get('authors/authors/{id}', [AuthorsController::class, 'get']);
+Route::post('publishers/publishers', [PublishersController::class, 'create']);
+Route::get('publishers/publishers/{id}', [PublishersController::class, 'get']);
