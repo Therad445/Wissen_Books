@@ -1,12 +1,12 @@
-BooksOne:
+PublishersOne:
   get:
     tags:
-      - books
-    operationId: getBooks
-    x-lg-handler: 'App\Http\ApiV1\Modules\Books\Controllers\BooksController@get'
+      - publishers
+    operationId: getPublishers
+    x-lg-handler: 'App\Http\ApiV1\Modules\Publishers\Controllers\PublishersController@get'
     x-lg-skip-request-generation: true
-    summary: Получение объекта типа Books
-    description: Получение объекта типа Books
+    summary: Получение объекта типа Publishers
+    description: Получение объекта типа Publishers
     parameters:
       - $ref: '../index.yaml#/components/parameters/PathId'
     responses:
@@ -15,33 +15,33 @@ BooksOne:
         content:
           application/json:
             schema:
-              $ref: './schemas/books.yaml#/BooksResponse'
+              $ref: './schemas/publishers.yaml#/PublishersResponse'
       "404":
         $ref: '../index.yaml#/components/responses/NotFound'
       "500":
         $ref: '../index.yaml#/components/responses/ServerError'
 
-Books:
+Publishers:
   post:
     tags:
-      - books
-    operationId: createBooks
-    summary: Запрос на создание book
-    description: Запрос на создание book
-    x-lg-handler: 'App\Http\ApiV1\Modules\Books\Controllers\BooksController@create'
+      - publishers
+    operationId: createPublishers
+    summary: Запрос на создание publisher
+    description: Запрос на создание publisher
+    x-lg-handler: 'App\Http\ApiV1\Modules\Publishers\Controllers\PublishersController@create'
     requestBody:
       required: true
       content:
         application/json:
           schema:
-            $ref: './schemas/books.yaml#/CreateBooksRequest'
+            $ref: './schemas/publishers.yaml#/CreatePublishersRequest'
     responses:
       "201":
         description: Выполнено успешно
         content:
           application/json:
             schema:
-              $ref: './schemas/books.yaml#/BooksResponse'
+              $ref: './schemas/publishers.yaml#/PublishersResponse'
       "400":
         $ref: '../index.yaml#/components/responses/BadRequest'
       "500":

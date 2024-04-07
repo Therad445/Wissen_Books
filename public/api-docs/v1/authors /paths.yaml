@@ -1,12 +1,12 @@
-BooksOne:
+AuthorsOne:
   get:
     tags:
-      - books
-    operationId: getBooks
-    x-lg-handler: 'App\Http\ApiV1\Modules\Books\Controllers\BooksController@get'
+      - authors
+    operationId: getAuthors
+    x-lg-handler: 'App\Http\ApiV1\Modules\Authors\Controllers\AuthorsController@get'
     x-lg-skip-request-generation: true
-    summary: Получение объекта типа Books
-    description: Получение объекта типа Books
+    summary: Получение объекта типа Authors
+    description: Получение объекта типа Authors
     parameters:
       - $ref: '../index.yaml#/components/parameters/PathId'
     responses:
@@ -15,33 +15,33 @@ BooksOne:
         content:
           application/json:
             schema:
-              $ref: './schemas/books.yaml#/BooksResponse'
+              $ref: './schemas/authors.yaml#/AuthorsResponse'
       "404":
         $ref: '../index.yaml#/components/responses/NotFound'
       "500":
         $ref: '../index.yaml#/components/responses/ServerError'
 
-Books:
+Authors:
   post:
     tags:
-      - books
-    operationId: createBooks
-    summary: Запрос на создание book
-    description: Запрос на создание book
-    x-lg-handler: 'App\Http\ApiV1\Modules\Books\Controllers\BooksController@create'
+      - authors
+    operationId: createAuthors
+    summary: Запрос на создание author
+    description: Запрос на создание author
+    x-lg-handler: 'App\Http\ApiV1\Modules\Authors\Controllers\AuthorsController@create'
     requestBody:
       required: true
       content:
         application/json:
           schema:
-            $ref: './schemas/books.yaml#/CreateBooksRequest'
+            $ref: './schemas/authors.yaml#/CreateAuthorsRequest'
     responses:
       "201":
         description: Выполнено успешно
         content:
           application/json:
             schema:
-              $ref: './schemas/books.yaml#/BooksResponse'
+              $ref: './schemas/authors.yaml#/AuthorsResponse'
       "400":
         $ref: '../index.yaml#/components/responses/BadRequest'
       "500":

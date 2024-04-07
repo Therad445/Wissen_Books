@@ -1,0 +1,35 @@
+Genres:
+  type: object
+  properties:
+    genre_id:
+      type: integer
+      description: Идентификатор жанра
+      example: 1
+    name:
+      type: string
+      description: Название жанра
+      example: "Фантастика"
+  required:
+    - name
+
+
+GenresResponse:
+  type: object
+  properties:
+    data:
+      $ref: '#/Genres'
+    meta:
+      type: object
+  required:
+    - data
+
+CreateGenresRequest:
+  type: object
+  properties:
+    name:
+      type: string
+      description: Название жанра
+      example: "Фантастика"
+  required:
+    - name
+

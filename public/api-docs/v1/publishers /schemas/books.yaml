@@ -1,0 +1,51 @@
+Publishers:
+  type: object
+  properties:
+    publisher_id:
+      type: integer
+      description: Идентификатор издателя
+      example: 1
+    name:
+      type: string
+      description: Название издателя
+      example: "Издательство А"
+    address:
+      type: string
+      description: Адрес издателя
+      example: "г. Москва, ул. Пушкина, д.10"
+    contact_info:
+      type: string
+      description: Контактная информация издателя
+      example: "Телефон: +7 (123) 456-78-90, Email: info@example.com"
+  required:
+    - name
+
+
+PublishersResponse:
+  type: object
+  properties:
+    data:
+      $ref: '#/Publishers'
+    meta:
+      type: object
+  required:
+    - data
+
+CreatePublishersRequest:
+  type: object
+  properties:
+    name:
+      type: string
+      description: Название издателя
+      example: "Издательство А"
+    address:
+      type: string
+      description: Адрес издателя
+      example: "г. Москва, ул. Пушкина, д.10"
+    contact_info:
+      type: string
+      description: Контактная информация издателя
+      example: "Телефон: +7 (123) 456-78-90, Email: info@example.com"
+  required:
+    - name
+

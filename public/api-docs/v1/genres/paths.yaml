@@ -1,12 +1,12 @@
-BooksOne:
+GenresOne:
   get:
     tags:
-      - books
-    operationId: getBooks
-    x-lg-handler: 'App\Http\ApiV1\Modules\Books\Controllers\BooksController@get'
+      - genres
+    operationId: getGenres
+    x-lg-handler: 'App\Http\ApiV1\Modules\Genres\Controllers\GenresController@get'
     x-lg-skip-request-generation: true
-    summary: Получение объекта типа Books
-    description: Получение объекта типа Books
+    summary: Получение объекта типа Genres
+    description: Получение объекта типа Genres
     parameters:
       - $ref: '../index.yaml#/components/parameters/PathId'
     responses:
@@ -15,33 +15,33 @@ BooksOne:
         content:
           application/json:
             schema:
-              $ref: './schemas/books.yaml#/BooksResponse'
+              $ref: './schemas/genres.yaml#/GenresResponse'
       "404":
         $ref: '../index.yaml#/components/responses/NotFound'
       "500":
         $ref: '../index.yaml#/components/responses/ServerError'
 
-Books:
+Genres:
   post:
     tags:
-      - books
-    operationId: createBooks
-    summary: Запрос на создание book
-    description: Запрос на создание book
-    x-lg-handler: 'App\Http\ApiV1\Modules\Books\Controllers\BooksController@create'
+      - genres
+    operationId: createGenres
+    summary: Запрос на создание genre
+    description: Запрос на создание genre
+    x-lg-handler: 'App\Http\ApiV1\Modules\Genres\Controllers\GenresController@create'
     requestBody:
       required: true
       content:
         application/json:
           schema:
-            $ref: './schemas/books.yaml#/CreateBooksRequest'
+            $ref: './schemas/genres.yaml#/CreateGenresRequest'
     responses:
       "201":
         description: Выполнено успешно
         content:
           application/json:
             schema:
-              $ref: './schemas/books.yaml#/BooksResponse'
+              $ref: './schemas/genres.yaml#/GenresResponse'
       "400":
         $ref: '../index.yaml#/components/responses/BadRequest'
       "500":

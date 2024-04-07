@@ -1,0 +1,53 @@
+Authors:
+  type: object
+  properties:
+    author_id:
+      type: integer
+      description: Идентификатор автора
+      example: 1
+    first_name:
+      type: string
+      description: Имя автора
+      example: "Иван"
+    last_name:
+      type: string
+      description: Фамилия автора
+      example: "Иванов"
+    biography:
+      type: string
+      description: Биография автора
+      example: "Иван Иванов - российский писатель..."
+  required:
+    - author_id
+    - first_name
+    - last_name
+
+
+AuthorsResponse:
+  type: object
+  properties:
+    data:
+      $ref: '#/Authors'
+    meta:
+      type: object
+  required:
+    - data
+
+CreateAuthorsRequest:
+  type: object
+  properties:
+    first_name:
+      type: string
+      description: Имя автора
+      example: "Иван"
+    last_name:
+      type: string
+      description: Фамилия автора
+      example: "Иванов"
+    biography:
+      type: string
+      description: Биография автора
+      example: "Иван Иванов - российский писатель..."
+  required:
+    - first_name
+    - last_name

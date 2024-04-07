@@ -13,9 +13,9 @@ tags:
   - name: books
     description: Books service
 paths:
-  /news/news:
+  /books/books:
     $ref: './books/paths.yaml#/Books'
-  /news/news/{id}:
+  /books/books/{id}:
     $ref: './books/paths.yaml#/BooksOne'
 components:
   parameters:
