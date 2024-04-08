@@ -1,6 +1,6 @@
 
 CREATE TABLE Books (
-    book_id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     author_id INT NOT NULL,
     isbn VARCHAR(20),
@@ -15,20 +15,20 @@ CREATE TABLE Books (
 );
 
 CREATE TABLE Authors (
-    author_id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     biography TEXT
 );
 
 CREATE TABLE Publishers (
-    publisher_id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     address TEXT,
     contact_info TEXT
 );
 
 CREATE TABLE Genres (
-    genre_id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL
 );

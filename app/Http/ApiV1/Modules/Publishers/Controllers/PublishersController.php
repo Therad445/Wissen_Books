@@ -2,32 +2,20 @@
 
 namespace App\Http\ApiV1\Modules\Publishers\Controllers;
 
+use App\Domain\Publishers\Actions\CreatePublishersAction;
+use App\Http\ApiV1\Modules\Publishers\Queries\PublishersQuery;
 use App\Http\ApiV1\Modules\Publishers\Requests\CreatePublishersRequest;
-use App\Models\Publisher;
-use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\JsonResponse;
+use App\Http\ApiV1\Modules\Publishers\Resources\PublishersResource;
 
 class PublishersController
 {
-    public function create(CreatePublishersRequest $request): Responsable
+    public function create(CreatePublishersRequest $request, CreatePublishersAction $action): PublishersResource
     {
-        // Создание нового издателя
-        $publisher = new Publisher();
-        $publisher->name = $request->input('name');
-        $publisher->address = $request->input('address');
-        $publisher->contact_info = $request->input('contact_info');
-        $publisher->save();
-
-        // Возвращение ответа
-        return new JsonResponse($publisher, 201);
+        return new PublishersResource($action->execute($request->validated()));
     }
 
-    public function get(int $id): Responsable
+    public function get(int $id, PublishersQuery $query): PublishersResource
     {
-        // Получение издателя по идентификатору
-        $publisher = Publisher::findOrFail($id);
-
-        // Возвращение ответа
-        return new JsonResponse($publisher);
+        return new PublishersResource($query->findOrFail($id));
     }
 }

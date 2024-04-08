@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Domain\Authors\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Genre extends Model
+class Authors extends Model
 {
     protected $fillable = [
-        'name'
+        'first_name', 'last_name', 'biography'
     ];
 
     public function books()

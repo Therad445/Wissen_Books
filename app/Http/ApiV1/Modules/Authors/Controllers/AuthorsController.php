@@ -2,32 +2,20 @@
 
 namespace App\Http\ApiV1\Modules\Authors\Controllers;
 
+use App\Domain\Authors\Actions\CreateAuthorsAction;
+use App\Http\ApiV1\Modules\Authors\Queries\AuthorsQuery;
 use App\Http\ApiV1\Modules\Authors\Requests\CreateAuthorsRequest;
-use App\Models\Author;
-use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\JsonResponse;
+use App\Http\ApiV1\Modules\Authors\Resources\AuthorsResource;
 
 class AuthorsController
 {
-    public function create(CreateAuthorsRequest $request): Responsable
+    public function create(CreateAuthorsRequest $request, CreateAuthorsAction $action): AuthorsResource
     {
-        // Создание нового автора
-        $author = new Author();
-        $author->first_name = $request->input('first_name');
-        $author->last_name = $request->input('last_name');
-        $author->biography = $request->input('biography');
-        $author->save();
-
-        // Возвращение ответа
-        return new JsonResponse($author, 201);
+        return new AuthorsResource($action->execute($request->validated()));
     }
 
-    public function get(int $id): Responsable
+    public function get(int $id, AuthorsQuery $query): AuthorsResource
     {
-        // Получение автора по идентификатору
-        $author = Author::findOrFail($id);
-
-        // Возвращение ответа
-        return new JsonResponse($author);
+        return new AuthorsResource($query->findOrFail($id));
     }
 }

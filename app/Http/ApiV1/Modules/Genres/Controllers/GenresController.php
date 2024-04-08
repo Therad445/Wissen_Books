@@ -2,30 +2,20 @@
 
 namespace App\Http\ApiV1\Modules\Genres\Controllers;
 
+use App\Domain\Genres\Actions\CreateGenresAction;
+use App\Http\ApiV1\Modules\Genres\Queries\GenresQuery;
 use App\Http\ApiV1\Modules\Genres\Requests\CreateGenresRequest;
-use App\Models\Genre;
-use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\JsonResponse;
+use App\Http\ApiV1\Modules\Genres\Resources\GenresResource;
 
 class GenresController
 {
-    public function create(CreateGenresRequest $request): Responsable
+    public function create(CreateGenresRequest $request, CreateGenresAction $action): GenresResource
     {
-        // Создание нового жанра
-        $genre = new Genre();
-        $genre->name = $request->input('name');
-        $genre->save();
-
-        // Возвращение ответа
-        return new JsonResponse($genre, 201);
+        return new GenresResource($action->execute($request->validated()));
     }
 
-    public function get(int $id): Responsable
+    public function get(int $id, GenresQuery $query): GenresResource
     {
-        // Получение жанра по идентификатору
-        $genre = Genre::findOrFail($id);
-
-        // Возвращение ответа
-        return new JsonResponse($genre);
+        return new GenresResource($query->findOrFail($id));
     }
 }
