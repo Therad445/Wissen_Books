@@ -6,13 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    // Запуск миграции
     public function up()
     {
+        //  Таблица Авторов
         Schema::create('authors', function (Blueprint $table) {
             $table->id('author_id');
             $table->string('first_name', 50);
@@ -21,6 +18,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        //  Таблица Издателей
         Schema::create('publishers', function (Blueprint $table) {
             $table->id('publisher_id');
             $table->string('name', 100);
@@ -29,12 +27,14 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        //  Таблица Жанры
         Schema::create('genres', function (Blueprint $table) {
             $table->id('genre_id');
             $table->string('name', 50);
             $table->timestamps();
         });
 
+        //  Таблица Книги
         Schema::create('books', function (Blueprint $table) {
             $table->id('book_id');
             $table->string('title', 255);
@@ -54,11 +54,7 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    // Откат миграции
     public function down()
     {
         Schema::dropIfExists('books');
