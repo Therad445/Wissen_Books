@@ -1,7 +1,7 @@
 Books:
   type: object
   properties:
-    book_id:
+    id:
       type: integer
       description: Идентификатор книги
       example: 1
@@ -38,7 +38,7 @@ Books:
       description: URL обложки книги
       example: "https://example.com/book_cover.jpg"
   required:
-    - book_id
+    - id
     - title
     - author_id
 

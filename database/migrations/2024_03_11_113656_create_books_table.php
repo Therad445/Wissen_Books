@@ -11,7 +11,7 @@ return new class extends Migration
     {
         //  Таблица Авторов
         Schema::create('authors', function (Blueprint $table) {
-            $table->id('author_id');
+            $table->id();
             $table->string('first_name', 50);
             $table->string('last_name', 50);
             $table->text('biography')->nullable();
@@ -20,7 +20,7 @@ return new class extends Migration
 
         //  Таблица Издателей
         Schema::create('publishers', function (Blueprint $table) {
-            $table->id('publisher_id');
+            $table->id();
             $table->string('name', 100);
             $table->text('address')->nullable();
             $table->text('contact_info')->nullable();
@@ -29,14 +29,14 @@ return new class extends Migration
 
         //  Таблица Жанры
         Schema::create('genres', function (Blueprint $table) {
-            $table->id('genre_id');
+            $table->id();
             $table->string('name', 50);
             $table->timestamps();
         });
 
         //  Таблица Книги
         Schema::create('books', function (Blueprint $table) {
-            $table->id('book_id');
+            $table->id();
             $table->string('title', 255);
             $table->unsignedBigInteger('author_id');
             $table->string('isbn', 20)->nullable();
@@ -46,9 +46,9 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('cover_image_url')->nullable();
 
-            $table->foreign('author_id')->references('author_id')->on('authors')->onDelete('cascade');
-            $table->foreign('publisher_id')->references('publisher_id')->on('publishers')->onDelete('set null');
-            $table->foreign('genre_id')->references('genre_id')->on('genres')->onDelete('set null');
+            $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
+            $table->foreign('publisher_id')->references('id')->on('publishers')->onDelete('set null');
+            $table->foreign('genre_id')->references('id')->on('genres')->onDelete('set null');
 
             $table->timestamps();
         });

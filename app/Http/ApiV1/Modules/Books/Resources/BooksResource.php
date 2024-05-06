@@ -13,7 +13,7 @@ class BooksResource extends BaseJsonResource
     {
         // todo
         return [
-            'book_id' => $this->book_id,
+            'id' => $this->id,
             'title' => $this->title,
             'author_id' => $this->author_id,
             'isbn' => $this->isbn,

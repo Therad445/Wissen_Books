@@ -2,6 +2,8 @@
 
 namespace App\Domain\Books\Models;
 
+use App\Domain\Books\Models\Tests\Factories\BooksFactory;
+use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Model;
 
 class Books extends Model
@@ -12,6 +14,11 @@ class Books extends Model
 
     public function books()
     {
-        return $this->hasMany(Book::class);
+        return $this->hasMany(Books::class);
+    }
+
+    public static function factory()
+    {
+        return BooksFactory::new();
     }
 }

@@ -13,7 +13,7 @@ class AuthorsResource extends BaseJsonResource
     {
         // todo
         return [
-            'author_id' => $this->author_id,
+            'id' => $this->id,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'biography' => $this->biography,

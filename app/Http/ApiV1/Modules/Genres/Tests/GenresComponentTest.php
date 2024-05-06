@@ -16,31 +16,16 @@ test('POST /api/v1/Genres/Genres create success', function () {
         "name" => "Test genre"
       
     ];
-    postJson('/api/v1/Authors/Authors', $request)
+    postJson('/api/v1/genres/genres', $request)
         ->assertStatus(201)
         ->assertJsonPath('data.name', $request['name']);
 
-    assertDatabaseHas(Authors::class, [
-        "name" => $request['name'],
-    ]);
 });
 
-test('POST /api/v1/genres/genres 201', function () {
-    postJson('/api/v1/genres/genres')
-        ->assertStatus(201);
-});
+test('GET /api/v1/genres/genres/{id} get genres success', function () {
+    $genres = Genres::factory()->create();
 
-test('POST /api/v1/genres/genres 400', function () {
-    postJson('/api/v1/genres/genres')
-        ->assertStatus(400);
-});
-
-test('GET /api/v1/genres/genres/{id} 200', function () {
-    getJson('/api/v1/genres/genres/{id}')
-        ->assertStatus(200);
-});
-
-test('GET /api/v1/genres/genres/{id} 404', function () {
-    getJson('/api/v1/genres/genres/{id}')
-        ->assertStatus(404);
+    getJson("/api/v1/genres/genres/{$genres->id}")
+        ->assertStatus(200)
+        ->assertJsonPath('data.name', $genres->name);
 });

@@ -1,7 +1,7 @@
 Genres:
   type: object
   properties:
-    genre_id:
+    id:
       type: integer
       description: Идентификатор жанра
       example: 1
@@ -10,6 +10,7 @@ Genres:
       description: Название жанра
       example: "Фантастика"
   required:
+    - id
     - name
 
 

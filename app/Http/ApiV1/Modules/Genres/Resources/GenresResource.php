@@ -13,7 +13,7 @@ class GenresResource extends BaseJsonResource
     {
         // todo
         return [
-            'genre_id' => $this->genre_id,
+            'id' => $this->id,
             'name' => $this->name,
         ];
     }

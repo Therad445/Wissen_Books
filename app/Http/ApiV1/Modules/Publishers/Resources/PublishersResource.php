@@ -13,7 +13,7 @@ class PublishersResource extends BaseJsonResource
     {
         // todo
         return [
-            'publisher_id' => $this->publisher_id,
+            'id' => $this->id,
             'name' => $this->name,
             'address' => $this->address,
             'contact_info' => $this->contact_info,

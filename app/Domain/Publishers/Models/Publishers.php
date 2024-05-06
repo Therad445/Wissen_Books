@@ -2,6 +2,8 @@
 
 namespace App\Domain\Publishers\Models;
 
+use App\Domain\Publishers\Models\Tests\Factories\PublishersFactory;
+use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Model;
 
 class Publishers extends Model
@@ -10,8 +12,13 @@ class Publishers extends Model
         'name', 'address', 'contact_info'
     ];
 
-    public function books()
+    public function publishers()
     {
-        return $this->hasMany(Book::class);
+        return $this->hasMany(Publishers::class);
+    }
+
+    public static function factory()
+    {
+        return PublishersFactory::new();
     }
 }

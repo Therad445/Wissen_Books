@@ -2,6 +2,8 @@
 
 namespace App\Domain\Genres\Models;
 
+use App\Domain\Genres\Models\Tests\Factories\GenresFactory;
+use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Model;
 
 class Genres extends Model
@@ -10,8 +12,13 @@ class Genres extends Model
         'name'
     ];
 
-    public function books()
+    public function genres()
     {
-        return $this->hasMany(Book::class);
+        return $this->hasMany(Genres::class);
+    }
+
+    public static function factory()
+    {
+        return GenresFactory::new();
     }
 }
