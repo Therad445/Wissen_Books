@@ -5,7 +5,7 @@
 /public/storage
 /storage/*.key
 /vendor
-.env
+# .env
 .env.backup
 .env.testing
 .phpunit.result.cache
@@ -36,7 +36,7 @@ yarn-error.log
 !phpunit.xml
 !psalm.xml
 *.yml
-!.docker/docker-compose.yml
+# !.docker/docker-compose.yml
 *.txt
 !robots.txt
 !robots_*.txt
